@@ -5,7 +5,7 @@ class Deck {
 public:
     Deck();
     void shuffle();
-    Card checkCardAt(unsigned int);
+    int getDealer(const unsigned int&);
     std::vector<std::unique_ptr<Card>> drawCards(unsigned int);
     void reset(DiscardPile&);
 

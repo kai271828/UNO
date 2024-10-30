@@ -1,5 +1,7 @@
-#include "Card.h"
 #include <iostream>
+
+#include <Card.h>
+#include <Uno.h>
 
 Card::Card(UnoColor color, UnoType type)
     : color(color), type(type) {}
@@ -41,7 +43,7 @@ std::string colorToString(UnoColor card) {
         case UnoColor::Yellow: return "Yellow";
         case UnoColor::Green: return "Green";
         case UnoColor::Blue: return "Blue";
-        case UnoColor::WildColor: return "";
+        case UnoColor::Black: return "Black";
         default: return "Unknown";
     }
 }

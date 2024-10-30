@@ -48,14 +48,7 @@ void game(const std::array<Player, N>& players)
         deckPtr->shuffle();
 
         // Decide the dealer
-        int playerCounter = 0;
-        UnoType temp = UnoType::Zero;
-        for (size_t i = 1; i < N; i++){
-            if (deckPtr->cards[i].getType() > temp){
-                temp = deckPtr->checkCardAt(i).getType();
-                playerCounter = i;
-            }
-        }
+        int playerCounter = deckPtr->getDealer(N);
 
         // Shuffle again
         deckPtr->shuffle();
@@ -69,7 +62,7 @@ void game(const std::array<Player, N>& players)
         }
         nextPlayer(playerCounter, N, order);
 
-        // Set discard pile
+        // Set the discard pile
         std::unique_ptr<DiscardPile> pilePtr = std::make_unique<DiscardPile>(*deckPtr);
 
         // If the first discard is action or wild
@@ -115,7 +108,7 @@ void game(const std::array<Player, N>& players)
             
             // If get rid of their last card, wins the hand and scores points for the cards held by each other player.
             if (players[playerCounter].hasNoCard()){
-                players[playerCounter].getPoints(players);
+                players[playerCounter].winPoints(players);
                 break;
             }
 

@@ -12,12 +12,12 @@ public:
     Player(const std::string);
     std::string getName() const;
     void setName(const std::string);
-    unsigned getPoint() const;
+    unsigned getPoints() const;
     void drawCards(Deck&, unsigned);
     void act(Deck&, DiscardPile&, UnoColor&, UnoOrder&);
     bool hasNoCard();
     template <std::size_t N>
-    void getPoints(const std::array<Player, N>&);
+    void winPoints(const std::array<Player, N>&);
 
 private:
     std::string name;
